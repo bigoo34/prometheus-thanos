@@ -57,7 +57,7 @@ data:
         send_resolved: true
 
 ---
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: alertmanager
