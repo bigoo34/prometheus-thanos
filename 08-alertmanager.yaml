@@ -1,7 +1,4 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: monitoring
+
 ---
 kind: ConfigMap
 apiVersion: v1
