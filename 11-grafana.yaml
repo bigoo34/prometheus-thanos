@@ -4,11 +4,11 @@ kind: StatefulSet
 metadata:
   name: grafana
   namespace: monitoring
-  spec:
+
+spec:
   selector:
     matchLabels:
       k8s-app: grafana
-spec:
   replicas: 1
   serviceName: grafana
   template:
