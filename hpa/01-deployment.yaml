@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: php-apache
+spec:
+  
+  containers:
+  - name: php-apache
+    image: yanivomc/hpa-php:1
+    resources:
+      requests:
+        cpu: "200m"
+      limits:
+        cpu: "400m"
