@@ -12,6 +12,9 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
+  selector:
+    matchLabels:
+      app: prometheus
   replicas: 3
   serviceName: prometheus-service
   template:

@@ -8,6 +8,9 @@ metadata:
   labels:
     name: node-exporter
 spec:
+  selector:
+    matchLabels:
+      name: node-exporter
   template:
     metadata:
       labels:
