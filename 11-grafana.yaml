@@ -56,7 +56,7 @@ spec:
       namespace: monitoring
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: gp2
+      storageClassName: standard
       resources:
         requests:
           storage: 5Gi
