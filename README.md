@@ -53,30 +53,43 @@ From here, we provide Grafana as a datasource for all the dashboards.
 kubectl apply -f 06-thanos-query.yaml
 ~~~
 
+# Deploying Thanos Gateway
+This is for accessing our historical data.
+~~~
+kubectl apply -f 07-thanos-gw.yaml
+~~~
+# Deploying Thanos compact
+
+This component will do the datasampeling and compaction for our data in the backet.
+
+~~~
+kubectl apply -f 08-thanos-compact.yaml
+~~~
+
 # Deploying Thanos Ruler
 ~~~
-kubectl apply -f 07-thanos-ruler.yaml
+kubectl apply -f 09-thanos-ruler.yaml
 ~~~
 
 # Deploying Alertmanager: 
 This will create our alertmanager deployment. It will deliver all the alerts generated as per Prometheus Rules.
 
 ~~~
-kubectl apply -f 08-alertmanager.yaml
+kubectl apply -f 10-alertmanager.yaml
 ~~~
 
 # Deploying Kubestate Metrics:
 Kubestate metrics deployment is needed to relay some important container metrics. These metrics are not natively exposed by the kubelet and are not directly available to Prometheus.
 
 ~~~
-kubectl apply -f 09-kubestate-metrics.yaml
+kubectl apply -f 11-kubestate-metrics.yaml
 ~~~
 
 # Deploying Node-exporter Daemonset:
 Node-exporter daemonset runs a node-exporter pod on each node. It exposes very important node metrics that can be pulled by Prometheus instances. 
 
 ~~~
-kubectl apply -f 10-node-exporter.yaml
+kubectl apply -f 12-node-exporter.yaml
 ~~~
 
 # Deploying Grafana: 
@@ -94,11 +107,16 @@ You can now build your custom dashboards or simply import dashboards from grafan
 
 
 ~~~
-kubectl apply -f 11-grafana.yaml
+kubectl apply -f 13-grafana.yaml
 ~~~
 
 
 # Deploying NGINX Ingress: 
+
+~~~
+kubectl apply -f 14-ingress-rules.yaml
+~~~
+
 ~~~
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.35.0/deploy/static/provider/aws/deploy.yaml
 ~~~
