@@ -1,10 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grafa-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manualy
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data1"
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: grafana
   namespace: monitoring
-
 spec:
   selector:
     matchLabels:
@@ -56,10 +69,11 @@ spec:
       namespace: monitoring
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: standard
+      storageClassName: manualy
+      volumeName: grafa-pv-volume
       resources:
         requests:
-          storage: 5Gi
+          storage: 2Gi
 ---
 apiVersion: v1
 kind: Service
@@ -75,4 +89,3 @@ spec:
     targetPort: 3000
   selector:
     k8s-app: grafana
-
